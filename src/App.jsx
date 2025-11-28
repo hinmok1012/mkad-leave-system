@@ -15,7 +15,7 @@ export default function App() {
     setUser(user);
 
     // 這裡判斷誰是主管，改成你的主管 email
-    const managerEmails = ["manager@example.com"];
+    const managerEmails = ["moksaihin852@gmail.com"];
     if (managerEmails.includes(user.email)) {
       setRole("manager");
     } else {
