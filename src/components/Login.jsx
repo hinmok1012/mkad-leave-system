@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { auth } from "../firebase";
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -12,15 +9,6 @@ export default function Login({ onLogin }) {
   const login = async () => {
     try {
       const res = await signInWithEmailAndPassword(auth, email, password);
-      onLogin(res.user);
-    } catch (e) {
-      alert(e.message);
-    }
-  };
-
-  const signup = async () => {
-    try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
       onLogin(res.user);
     } catch (e) {
       alert(e.message);
@@ -42,7 +30,6 @@ export default function Login({ onLogin }) {
         margin: 0,
       }}
     >
-      {/* ⭐ Middle wrapper perfectly centered */}
       <div
         style={{
           width: "100%",
@@ -56,30 +43,25 @@ export default function Login({ onLogin }) {
           padding: 0,
         }}
       >
-        {/* Logo */}
-        <div style={{ margin: 0 }}>
-  <svg
-    width="80"
-    height="80"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="white"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
-    <line x1="16" y1="2" x2="16" y2="6"></line>
-    <line x1="8" y1="2" x2="8" y2="6"></line>
-    <line x1="3" y1="10" x2="21" y2="10"></line>
-  </svg>
-</div>
+        {/* Calendar Logo */}
+        <svg
+          width="80"
+          height="80"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
 
-
-        {/* App Name */}
         <h1 style={{ margin: 0, fontSize: 28 }}>MKAD請假系統</h1>
 
-        {/* Username */}
         <input
           placeholder="Username"
           value={email}
@@ -95,7 +77,6 @@ export default function Login({ onLogin }) {
           }}
         />
 
-        {/* Password */}
         <input
           type="password"
           placeholder="Password"
@@ -112,7 +93,7 @@ export default function Login({ onLogin }) {
           }}
         />
 
-        {/* Login */}
+        {/* Login Only */}
         <button
           onClick={login}
           style={{
@@ -128,34 +109,6 @@ export default function Login({ onLogin }) {
         >
           Login
         </button>
-
-        {/* Signup */}
-        <button
-          onClick={signup}
-          style={{
-            width: "100%",
-            padding: "12px",
-            borderRadius: "25px",
-            border: "2px solid white",
-            background: "transparent",
-            color: "white",
-            fontWeight: "bold",
-            cursor: "pointer",
-          }}
-        >
-          Sign Up
-        </button>
-
-        {/* Forgot */}
-        <div
-          style={{
-            fontSize: "12px",
-            opacity: 0.8,
-            cursor: "pointer",
-          }}
-        >
-          Forgot password?
-        </div>
       </div>
     </div>
   );
