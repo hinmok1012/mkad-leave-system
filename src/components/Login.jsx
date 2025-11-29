@@ -30,19 +30,17 @@ export default function Login({ onLogin }) {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        height: "100vh",
+        width: "100vw",
         background: "linear-gradient(180deg, #4CD7C8, #2CC5A7)",
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: 20,
         color: "white",
         fontFamily: "Arial",
       }}
     >
-      {/* Logo + Title */}
-      <div style={{ textAlign: "center", marginBottom: 40 }}>
+      <div style={{ textAlign: "center", width: "100%", maxWidth: 350 }}>
         <svg
           width="80"
           height="80"
@@ -57,85 +55,84 @@ export default function Login({ onLogin }) {
         </svg>
 
         <h1 style={{ marginTop: 10, fontSize: 26 }}>MKAD</h1>
-      </div>
 
-      {/* Username */}
-      <input
-        placeholder="Username"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        style={{
-          width: "80%",
-          padding: "15px",
-          borderRadius: "25px",
-          border: "none",
-          marginBottom: "15px",
-          textAlign: "center",
-        }}
-      />
+        <input
+          placeholder="Username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "15px",
+            borderRadius: "25px",
+            border: "none",
+            marginTop: 20,
+            textAlign: "center",
+            background: "#333",
+            color: "white",
+          }}
+        />
 
-      {/* Password */}
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{
-          width: "80%",
-          padding: "15px",
-          borderRadius: "25px",
-          border: "none",
-          marginBottom: "8px",
-          textAlign: "center",
-        }}
-      />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          style={{
+            width: "100%",
+            padding: "15px",
+            borderRadius: "25px",
+            border: "none",
+            marginTop: 15,
+            textAlign: "center",
+            background: "#333",
+            color: "white",
+          }}
+        />
 
-      {/* Login Button */}
-      <button
-        onClick={login}
-        style={{
-          width: "80%",
-          padding: "12px",
-          marginTop: "20px",
-          borderRadius: "25px",
-          background: "white",
-          color: "#2CC5A7",
-          border: "none",
-          fontWeight: "bold",
-          cursor: "pointer",
-        }}
-      >
-        Login
-      </button>
+        <button
+          onClick={login}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginTop: 20,
+            borderRadius: "25px",
+            background: "white",
+            color: "#2CC5A7",
+            border: "none",
+            fontWeight: "bold",
+            cursor: "pointer",
+          }}
+        >
+          Login
+        </button>
 
-      {/* Signup Button */}
-      <button
-        onClick={signup}
-        style={{
-          width: "80%",
-          padding: "12px",
-          marginTop: "10px",
-          borderRadius: "25px",
-          border: "2px solid white",
-          background: "transparent",
-          color: "white",
-          fontWeight: "bold",
-          cursor: "pointer",
-        }}
-      >
-        Sign Up
-      </button>
+        <button
+          onClick={signup}
+          style={{
+            width: "100%",
+            padding: "12px",
+            marginTop: 10,
+            borderRadius: "25px",
+            border: "2px solid white",
+            background: "transparent",
+            color: "white",
+            fontWeight: "bold",
+            cursor: "pointer",
+          }}
+        >
+          Sign Up
+        </button>
 
-      {/* Forgot Password */}
-      <div
-        style={{
-          marginTop: "15px",
-          fontSize: "12px",
-          opacity: 0.8,
-          cursor: "pointer",
-        }}
-      >
-        Forgot password?
+        <div
+          style={{
+            marginTop: 15,
+            fontSize: "12px",
+            opacity: 0.8,
+            cursor: "pointer",
+          }}
+        >
+          Forgot password?
+        </div>
       </div>
     </div>
   );
