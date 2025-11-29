@@ -24,16 +24,26 @@ export default function LeaveList({ user, searchKeyword = "" }) {
   }, [user.email]);
 
   // ⭐ 搜尋過濾邏輯
-  const filtered = leaves.filter((item) => {
-    const lower = searchKeyword.toLowerCase();
+ const filtered = leaves.filter((item) => {
+  const lower = searchKeyword.toLowerCase();
 
-    return (
-      item.type?.toLowerCase().includes(lower) ||
-      item.status?.toLowerCase().includes(lower) ||
-      item.date?.toLowerCase().includes(lower) ||
-      item.user?.toLowerCase().includes(lower)
-    );
-  });
+  // date 是字串 → 直接用
+  const dateStr = (item.date || "").toLowerCase();
+
+  // createdAt 是 Timestamp → 轉 YYYY-MM-DD
+  const createdAtStr = item.createdAt?.toDate
+    ? item.createdAt.toDate().toISOString().substring(0, 10)
+    : "";
+
+  return (
+    (item.type || "").toLowerCase().includes(lower) ||
+    (item.status || "").toLowerCase().includes(lower) ||
+    (item.name || "").toLowerCase().includes(lower) ||
+    dateStr.includes(lower) ||
+    createdAtStr.includes(lower)
+  );
+});
+
 
   return (
     <div>
