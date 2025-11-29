@@ -19,8 +19,12 @@ export default function App() {
     setRole(managerEmails.includes(u.email) ? "manager" : "employee");
   };
 
-  if (!user) return <Login onLogin={handleLogin} />;
+  // ⭐ 重點：登入頁面不包在外層 div 裡
+  if (!user) {
+    return <Login onLogin={handleLogin} />;
+  }
 
+  // ⭐ 只有登入後才渲染 layout（背景、padding等）
   return (
     <div style={{ padding: 20, background: "#f3f4f6", minHeight: "100vh" }}>
       <h1>假期系統</h1>
