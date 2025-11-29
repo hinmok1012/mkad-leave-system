@@ -57,7 +57,7 @@ export default function Login({ onLogin }) {
         }}
       >
         {/* Logo */}
-       <div style={{ margin: 0 }}>
+        <div style={{ margin: 0 }}>
   <svg
     width="80"
     height="80"
@@ -79,8 +79,7 @@ export default function Login({ onLogin }) {
         {/* App Name */}
         <h1 style={{ margin: 0, fontSize: 28 }}>MKAD請假系統</h1>
 
-        {/* Username */}<h1 style={{ margin: 0, fontSize: 28 }}>MKAD請假系統</h1>
-
+        {/* Username */}
         <input
           placeholder="Username"
           value={email}
