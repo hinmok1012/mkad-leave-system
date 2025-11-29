@@ -57,25 +57,30 @@ export default function Login({ onLogin }) {
         }}
       >
         {/* Logo */}
-        <div style={{ margin: 0 }}>
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 21s-6-4.35-6-10a6 6 0 0 1 12 0c0 5.65-6 10-6 10z"></path>
-          </svg>
-        </div>
+       <div style={{ margin: 0 }}>
+  <svg
+    width="80"
+    height="80"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="white"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect x="3" y="4" width="18" height="18" rx="3" ry="3"></rect>
+    <line x1="16" y1="2" x2="16" y2="6"></line>
+    <line x1="8" y1="2" x2="8" y2="6"></line>
+    <line x1="3" y1="10" x2="21" y2="10"></line>
+  </svg>
+</div>
+
 
         {/* App Name */}
         <h1 style={{ margin: 0, fontSize: 28 }}>MKAD請假系統</h1>
 
-        {/* Username */}
+        {/* Username */}<h1 style={{ margin: 0, fontSize: 28 }}>MKAD請假系統</h1>
+
         <input
           placeholder="Username"
           value={email}
