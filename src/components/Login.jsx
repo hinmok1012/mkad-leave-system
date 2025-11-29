@@ -38,24 +38,44 @@ export default function Login({ onLogin }) {
         alignItems: "center",
         color: "white",
         fontFamily: "Arial",
+        padding: 0,
+        margin: 0,
       }}
     >
-      <div style={{ textAlign: "center", width: "100%", maxWidth: 350 }}>
-        <svg
-          width="80"
-          height="80"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="white"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M12 21s-6-4.35-6-10a6 6 0 0 1 12 0c0 5.65-6 10-6 10z"></path>
-        </svg>
+      {/* ⭐ Middle wrapper perfectly centered */}
+      <div
+        style={{
+          width: "100%",
+          maxWidth: 330,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 20,
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        {/* Logo */}
+        <div style={{ margin: 0 }}>
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M12 21s-6-4.35-6-10a6 6 0 0 1 12 0c0 5.65-6 10-6 10z"></path>
+          </svg>
+        </div>
 
-        <h1 style={{ marginTop: 10, fontSize: 26 }}>MKAD</h1>
+        {/* App Name */}
+        <h1 style={{ margin: 0, fontSize: 28 }}>MKAD請假系統</h1>
 
+        {/* Username */}
         <input
           placeholder="Username"
           value={email}
@@ -65,13 +85,13 @@ export default function Login({ onLogin }) {
             padding: "15px",
             borderRadius: "25px",
             border: "none",
-            marginTop: 20,
             textAlign: "center",
             background: "#333",
             color: "white",
           }}
         />
 
+        {/* Password */}
         <input
           type="password"
           placeholder="Password"
@@ -82,19 +102,18 @@ export default function Login({ onLogin }) {
             padding: "15px",
             borderRadius: "25px",
             border: "none",
-            marginTop: 15,
             textAlign: "center",
             background: "#333",
             color: "white",
           }}
         />
 
+        {/* Login */}
         <button
           onClick={login}
           style={{
             width: "100%",
             padding: "12px",
-            marginTop: 20,
             borderRadius: "25px",
             background: "white",
             color: "#2CC5A7",
@@ -106,12 +125,12 @@ export default function Login({ onLogin }) {
           Login
         </button>
 
+        {/* Signup */}
         <button
           onClick={signup}
           style={{
             width: "100%",
             padding: "12px",
-            marginTop: 10,
             borderRadius: "25px",
             border: "2px solid white",
             background: "transparent",
@@ -123,9 +142,9 @@ export default function Login({ onLogin }) {
           Sign Up
         </button>
 
+        {/* Forgot */}
         <div
           style={{
-            marginTop: 15,
             fontSize: "12px",
             opacity: 0.8,
             cursor: "pointer",
