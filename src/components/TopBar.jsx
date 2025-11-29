@@ -1,4 +1,4 @@
-export default function TopBar({ title }) {
+export default function TopBar({ title, onMenuClick }) {
   return (
     <div
       style={{
@@ -13,7 +13,12 @@ export default function TopBar({ title }) {
         fontWeight: "bold",
       }}
     >
-      <div style={{ fontSize: 22, cursor: "pointer" }}>☰</div>
+      <div
+        style={{ fontSize: 22, cursor: "pointer" }}
+        onClick={onMenuClick}
+      >
+        ☰
+      </div>
 
       <div>{title}</div>
 
