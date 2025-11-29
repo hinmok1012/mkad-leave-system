@@ -1,53 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { auth } from "./firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 import Login from "./components/Login";
-import LeaveForm from "./components/LeaveForm";
-import LeaveList from "./components/LeaveList";
-import ApproveList from "./components/ApproveList";
+import Layout from "./components/Layout";
+
 import Dashboard from "./components/Dashboard";
-import Calendar from "./components/Calendar";
+import LeaveList from "./components/LeaveList";
+import LeaveForm from "./components/LeaveForm";
 
 export default function App() {
   const [user, setUser] = useState(null);
-  const [role, setRole] = useState("employee");
+  const [tab, setTab] = useState("cycle");
+  const [loading, setLoading] = useState(true);
 
-  const managerEmails = ["moksaihin852@gmail.com"];
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (u) => {
+      setUser(u);
+      setLoading(false);
+    });
+    return () => unsub();
+  }, []);
 
-  const handleLogin = (u) => {
-    setUser(u);
-    setRole(managerEmails.includes(u.email) ? "manager" : "employee");
+  if (loading) return <div>Loading...</div>;
+  if (!user) return <Login onLogin={setUser} />;
+
+  const pages = {
+    cycle: <Dashboard />,
+    list: <LeaveList user={user} />,
+    form: <LeaveForm user={user} />,
   };
 
-  // ⭐ 重點：登入頁面不包在外層 div 裡
-  if (!user) {
-    return <Login onLogin={handleLogin} />;
-  }
+  const titles = {
+    cycle: "大循環",
+    list: "請假名單",
+    form: "申請",
+  };
 
-  // ⭐ 只有登入後才渲染 layout（背景、padding等）
   return (
-    <div style={{ padding: 20, background: "#f3f4f6", minHeight: "100vh" }}>
-      <h1>假期系統</h1>
-      <p>登入者：{user.email}</p>
-
-      {role === "employee" && (
-        <>
-          <LeaveForm user={user} />
-          <LeaveList user={user} />
-        </>
-      )}
-
-      {role === "manager" && <ApproveList />}
-
-      <Calendar />
-      <Dashboard />
-
-      <button
-        onClick={() => auth.signOut().then(() => setUser(null))}
-        style={{ marginTop: 20 }}
-      >
-        登出
-      </button>
-    </div>
+    <Layout title={titles[tab]} tab={tab} setTab={setTab}>
+      {pages[tab]}
+    </Layout>
   );
 }
