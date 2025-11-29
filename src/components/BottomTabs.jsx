@@ -1,12 +1,18 @@
 export default function BottomTabs({ tab, setTab }) {
   const tabStyle = (isActive) => ({
-    textAlign: "center",
     flex: 1,
+    textAlign: "center",
     padding: "6px 0",
-    color: isActive ? "black" : "#444",
-    fontWeight: isActive ? "bold" : "normal",
-    background: "#FFA500",
     cursor: "pointer",
+    background: "#FFA500",
+    color: isActive ? "black" : "#555",
+    fontWeight: isActive ? "bold" : "normal",
+    borderTop: isActive ? "3px solid black" : "3px solid transparent",
+  });
+
+  const iconStyle = (isActive) => ({
+    fontSize: 20,
+    opacity: isActive ? 1 : 0.6,
   });
 
   return (
@@ -14,22 +20,25 @@ export default function BottomTabs({ tab, setTab }) {
       style={{
         height: 55,
         display: "flex",
-        background: "#FFA500",
         borderTop: "1px solid #ddd",
+        background: "#FFA500",
       }}
     >
+      {/* 大循環 */}
       <div style={tabStyle(tab === "cycle")} onClick={() => setTab("cycle")}>
-        <div style={{ fontSize: 20 }}>📅</div>
+        <div style={iconStyle(tab === "cycle")}>📅</div>
         <div style={{ fontSize: 12 }}>大循環</div>
       </div>
 
+      {/* 請假名單 */}
       <div style={tabStyle(tab === "list")} onClick={() => setTab("list")}>
-        <div style={{ fontSize: 20 }}>📋</div>
+        <div style={iconStyle(tab === "list")}>📋</div>
         <div style={{ fontSize: 12 }}>請假名單</div>
       </div>
 
+      {/* 申請 */}
       <div style={tabStyle(tab === "form")} onClick={() => setTab("form")}>
-        <div style={{ fontSize: 20 }}>✉️</div>
+        <div style={iconStyle(tab === "form")}>✉️</div>
         <div style={{ fontSize: 12 }}>申請</div>
       </div>
     </div>
