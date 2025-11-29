@@ -14,6 +14,11 @@ export default function Layout({
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
 
+  const currentPage =
+    tab === "list"
+      ? React.cloneElement(children, { searchKeyword })
+      : children;
+
   return (
     <div
       style={{
@@ -36,9 +41,7 @@ export default function Layout({
           padding: "10px",
         }}
       >
-        {children && searchKeyword
-          ? React.cloneElement(children, { searchKeyword })
-          : children}
+        {currentPage}
       </div>
 
       <BottomTabs tab={tab} setTab={setTab} />
