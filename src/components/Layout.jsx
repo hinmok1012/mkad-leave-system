@@ -14,7 +14,8 @@ export default function Layout({
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState("");
 
-  const currentPage =
+  // ⭐ 只有在請假名單 (list) 才注入搜尋字串
+  const page =
     tab === "list"
       ? React.cloneElement(children, { searchKeyword })
       : children;
@@ -41,7 +42,7 @@ export default function Layout({
           padding: "10px",
         }}
       >
-        {currentPage}
+        {page}
       </div>
 
       <BottomTabs tab={tab} setTab={setTab} />
